@@ -569,6 +569,10 @@ public class SLConnection
     public SLRequest Request(string resource, object id) =>
         new SLRequest(this, Client.Request(id is string ? $"{resource}('{id}')" : $"{resource}({id})"));
 
+
+    public SLRequest Request(string resource, string ids) =>
+        new SLRequest(this, Client.Request($"{resource}({ids})"));
+
     /// <summary>
     /// Calls the Login method to ensure a valid session and then executes the provided request.
     /// If the request is unsuccessfull with any return code present in <see cref="HttpStatusCodesToRetry"/>, 
